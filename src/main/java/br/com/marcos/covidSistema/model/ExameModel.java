@@ -1,6 +1,6 @@
 package br.com.marcos.covidSistema.model;
 
-import java.text.DateFormat;
+//import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,14 +34,14 @@ public class ExameModel {
     @Column(length = 14, nullable = false)
     private String protocolo;
 
-    @Column(length = 60, nullable = false)
+    @Column(length = 70, nullable = false)
     private String nomepaciente;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date datanasc;
 
-    @Column(length = 60)
+    @Column(length = 70)
     private String nomemae;
 
     @Column(length = 60)
@@ -57,7 +57,7 @@ public class ExameModel {
     @Column(length = 30)
     private String municol;
 
-    @Column(length = 30)
+    @Column(length = 60)
     private String localexame;
 
     @Column(length = 25)
@@ -69,7 +69,7 @@ public class ExameModel {
     @Column(length = 6)
     private String classe;
 
-    @Column(length = 20)
+    @Column(length = 70)
     private String grupo;
 
     @Column(length = 50)

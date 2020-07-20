@@ -80,9 +80,20 @@ public class ExameController {
         var exame = exameRepository.findById(exameNovo.getId()).get();
 
         exame.setNomepaciente(exameNovo.getNomepaciente());
+        exame.setNomemae(exameNovo.getNomemae());
+        exame.setNomesocial(exameNovo.getNomesocial());
+        exame.setMunires(exameNovo.getMunires());
+        exame.setMunicol(exameNovo.getMunicol());
+        exame.setGrupo(exameNovo.getGrupo());
+        exame.setOptradiosint(exameNovo.getOptradiosint());
+        exame.setOptradiores(exameNovo.getOptradiores());
+        exame.setFabri(exameNovo.getFabri());
         exame.setDatanasc(dataToString(exameNovo.getDatanasc()));
-        exame.setDatasint(dataToString(exameNovo.getDatasint()));
         exame.setDatatest(dataToString(exameNovo.getDatatest()));
+
+        if(exameNovo.getDatasint()!=null){
+        exame.setDatasint(dataToString(exameNovo.getDatasint()));
+        }
 
         exameRepository.saveAndFlush(exame);
 

@@ -109,18 +109,18 @@
                          <label>Paciente esta com sintomas? </label>
                          <div class="form-check">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optradiosint" value="Sim - Paciente sintomático" checked>Sim - Paciente sintomático
+                              <input type="radio" class="form-check-input" name="optradiosint" value="Sim - Paciente sintomático" required>Sim - Paciente sintomático
                             </label>
                           </div>
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optradiosint" value="Não - Paciente assintomático">Não - Paciente assintomático
+                              <input type="radio" class="form-check-input" name="optradiosint" value="Não - Paciente assintomático" required>Não - Paciente assintomático
                             </label>
                           </div>
                      </div>
                      <div  class="col-md-4 mb-3">
                          <label>Data inicio dos sintomas:</label>
-                         <input type="date" class="form-control" id="datatest" name="datasint" value="${(datasintoma)!}" >
+                         <input type="date" class="form-control" id="datatest" name="datasint" value="${(datasintoma)!}">
                      </div>
                        </div>
                        <div class="row">
@@ -128,12 +128,12 @@
                             <label>Resultado do teste rapido:</label>
                             <div class="form-check form-check-inline">
                                <label class="form-check-label">
-                                 <input type="radio" class="form-check-input" name="optradiores" value="IgM" checked>IgM
+                                 <input type="radio" class="form-check-input" name="optradiores" value="IgM" required>IgM
                                </label>
                              </div>
                              <div class="form-check form-check-inline">
                                <label class="form-check-label">
-                                 <input type="radio" class="form-check-input" name="optradiores" value="IgG">IgG
+                                 <input type="radio" class="form-check-input" name="optradiores" value="IgG" required>IgG
                                </label>
                              </div>
                         

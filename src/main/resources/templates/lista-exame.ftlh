@@ -49,28 +49,35 @@
      <table class="table table-striped table-bordered dt-responsive nowrap" id="servicetable">
     <thead>
         <th>-</th>
-        <th>ID</th>
         <th>PROTOCOLO</th>
-        <th>DATA NASCIMENTO</th>
+        <th>NOME</th>
+        <th>DATA TESTE</th>
+        <th>RESULTADO</th>
         <th>AÇÕES</th>        
         
         
     </thead>
     <tbody>
     <#list listaExames as exame>
-          <tr data-child-name="${exame.id}" data-child-value="${exame.nomepaciente}" data-child-troco="${exame.nomemae}">
-         <td style="align: center;"> 
+          <tr data-child-id="${exame.id}" data-child-prot="${exame.protocolo}" data-child-nome="${exame.nomepaciente}" data-child-mae="${exame.nomemae}"
+          data-child-social="${exame.nomesocial}" data-child-teste="${exame.datatest?string.short}" data-child-cidade="${exame.munires}"
+          data-child-muncoleta="${exame.municol}" data-child-local="${exame.localexame}" data-child-prof="${exame.nomeprof}"
+          data-child-numeroclasse="${exame.numclasse}" data-child-classe="${exame.classe}" data-child-grupo="${exame.grupo}"
+          data-child-sintomas="${exame.optradiosint}" data-child-resultado="${exame.optradiores}" data-child-dataini="${(exame.datasint?string.short)!}" 
+          data-child-fabricante="${exame.fabri}"
+          >
+         <td> 
          <button type="button" class="btn btn-info" >
           <i class="glyphicon glyphicon-plus"></i> Informações 
-        </button>
-         
-            </td>
-    <td>${exame.id}<br></td>
+        </button></td>
+    <td>${exame.protocolo}<br></td>
     <td>${exame.nomepaciente}</td>
-    <td>${exame.datanasc?string.short}</td>
+    <td>${exame.datatest?string.short}</td>
+    <td>${exame.optradiores}</td>
     <td>
     <a href="/prepareEditar?id=${exame.id}" class="btn btn-outline-warning" >Editar <i class="glyphicon glyphicon-edit"></i></a>
             <a href="/excluir?id=${exame.id}" class="btn btn-outline-danger" >Excluir <i class="glyphicon glyphicon-remove"></i></a>
+            <a href="/relatorio?id=${exame.id}" class="btn btn-outline-secondary" >Imprimir <i class="glyphicon glyphicon-list-alt"></i></a>
     </td>
       </tr>
         </#list>
@@ -90,8 +97,17 @@
 
   <script type="text/javascript" src="jquery.dataTables.js"></script>
   <script type="text/javascript">
-  function format (name,value,troco) {
-    return '<div>ID: ' + name + '<br />Nome do paciente: ' + value + '<br />Nome da mãe: ' + troco + '</div>';
+  function format (id,prot,nome,mae,social,teste,cidade,muncoleta,local,prof,numeroclasse,classe,grupo,sintomas,resultado,fabricante,dataini) {
+    return '<div class="row">' 
+          +'<div class="col-sm-3">'+'ID:<br />Nome do paciente:<br />Protocolo:<br />Nome da mãe:<br />Nome social: '
+          +'<br/>Data realização do teste:<br/>Municipio do Paciente:<br/>Município de coleta:'
+          +'<br/>Local/Serviço de saúde de coleta do exame:<br/>Nome do profissional que realizou o teste rápido:'
+          +'<br/>Numero do registro do conselho de classe:<br/>Conselho de classe:'
+          +'<br/>Grupos priorítarios:<br/>Paciente esta com sintomas?<br/>Data do inicio dos sintomas:'
+          +'<br/>Resultado do teste rápido:<br/>Fabricante do teste e lote:</div>'+'<div class="col-sm-3">'
+          +id+'<br/>'+prot+'<br/>'+nome+'<br/>'+mae+'<br/>'+social+'<br/>'+teste+'<br/>'+cidade+'<br/>'+muncoleta+'<br/>'+local
+          +'<br/>'+prof+'<br/>'+numeroclasse+'<br/>'+classe+'<br/>'+grupo+'<br/>'+sintomas+'<br/>'+dataini+'<br/>'+resultado+'<br/>'+fabricante
+          +'</div></div>';
 }
   var table = $('#servicetable').DataTable({
       language: {
@@ -112,11 +128,15 @@
           tr.removeClass('shown');
       } else {
           // Open this row
-          row.child(format(tr.data('child-name'), tr.data('child-value'),tr.data('child-troco'))).show();
+          row.child(format(tr.data('child-id'), tr.data('child-prot'), tr.data('child-nome'),tr.data('child-mae'),
+          tr.data('child-social'), tr.data('child-teste'),tr.data('child-cidade'),
+          tr.data('child-muncoleta'), tr.data('child-local'),tr.data('child-prof'),
+          tr.data('child-numeroclasse'), tr.data('child-classe'),tr.data('child-grupo'),
+          tr.data('child-sintomas'), tr.data('child-resultado'),tr.data('child-fabricante'),tr.data('child-dataini'))).show();
           tr.addClass('shown');
       }
   });
-
+dataini
 </script>
 
 </body>
